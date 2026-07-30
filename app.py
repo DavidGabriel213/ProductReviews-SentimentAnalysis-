@@ -17,6 +17,8 @@ le = joblib.load('label_encoder.joblib')
 #stopwords
 nltk.download("stopwords")
 nltk.download("wordnet")
+nltk.download('punkt')
+nltk.download('punkt_tab')
 #lematizer(exact as training)
 lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words('english'))
