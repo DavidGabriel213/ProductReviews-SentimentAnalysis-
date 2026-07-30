@@ -11,9 +11,9 @@ from scipy.sparse import hstack
 
 app = Flask(__name__)
 # model, vectorizer ane labelencoder
-model = joblib.load('/storage/emulated/0/download/SentimentAnalysisProject/sentiment_model.joblib')
-vectorizer = joblib.load('/storage/emulated/0/download/SentimentAnalysisProject/tfidf_vectorizer.joblib')
-le = joblib.load('/storage/emulated/0/download/SentimentAnalysisProject/label_encoder.joblib')
+model = joblib.load('sentiment_model.joblib')
+vectorizer = joblib.load('tfidf_vectorizer.joblib')
+le = joblib.load('label_encoder.joblib')
 #lematizer(exact as training)
 lemmatizer = WordNetLemmatizer()
 stop_words = set(stopwords.words('english'))
@@ -49,7 +49,7 @@ def predict():
         'Negative': 'result-negative'
         }
         sentiment_class = class_map.get(prediction, '')
-    return render_template('stmnt.html',prediction = prediction,        sentiment_class = sentiment_class)
+    return render_template('index.html',prediction = prediction,        sentiment_class = sentiment_class)
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
