@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='sendesign.css') }}">
+  <title>Product Reviews — Sentiment Analysis</title>
+</head>
+<body>
+  <div class="MP">
+  <form action="/" method="POST">
+    <h2>Product Reviews</h2>
+    <p>Enter your review below</p>
+    <label>Product Review:</label>
+    <textarea name="review"
+              rows="4"
+              placeholder="Enter product review here..."
+              required></textarea>
+    <button type="submit">Analyse Sentiment</button>
+    {% if prediction %}
+    <div class="{{ sentiment_class }}">
+      {{ prediction }}
+    </div>
+    {% endif %}
+  </form>
+  </div>
+</body>
+</html>
